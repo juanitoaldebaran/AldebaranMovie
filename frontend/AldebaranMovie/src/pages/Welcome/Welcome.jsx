@@ -6,47 +6,44 @@ import { faCirclePlay, faFilm } from "@fortawesome/free-solid-svg-icons";
 
 export default function Welcome() {
 
-    const projectName = "AldebaranMovie";
+    const projectDesc = "Your Favorite Movie Platform";
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isTyping, setIsTyping] = useState(true);
-    const [newProjectName, setNewProjectName] = useState("");
+    const [newProjectDesc, setNewProjectDesc] = useState("");
     
     useEffect(() => {
         const timeInterval = isTyping ? 250 : 150;
         let timeOut;
 
-        if (isTyping && currentIndex < projectName.length) {
+        if (isTyping && currentIndex < projectDesc.length) {
             timeOut = setTimeout(() => {
-                setNewProjectName((prev) => (prev + projectName.charAt(currentIndex)));
+                setNewProjectDesc((prev) => (prev + projectDesc.charAt(currentIndex)));
                 setCurrentIndex((prev) => (prev + 1));
             }, timeInterval);
         } else if (!isTyping && currentIndex > 0) {
             timeOut = setTimeout(() => {
-                setNewProjectName((prev) => (prev.slice(0, -1)));
+                setNewProjectDesc((prev) => (prev.slice(0, -1)));
                 setCurrentIndex((prev) => (prev -1));
             }, timeInterval)
-        } else if (currentIndex === projectName.length) {
+        } else if (currentIndex === projectDesc.length) {
             setIsTyping(false);
         } else if (currentIndex === 0) {
             setIsTyping(true);
         }
         
         return () => clearTimeout(timeOut);
-    }, [currentIndex, isTyping, newProjectName]);
+    }, [currentIndex, isTyping, newProjectDesc]);
 
     return (
-        <div className="flex items-center justify-center h-screen bg-black text-white flex-col">
+        <div className="flex flex-col items-center justify-center w-full h-screen bg-black text-white text-center">
             <div className="mb-8 ">
                 <FontAwesomeIcon className="text-white-500" size="3x" icon={faFilm}/>
             </div>
-            <div className="text-3xl md:text-4xl font-bold">
-                <h1>WELCOME TO</h1>
-            </div>
-            <div className="text-3xl md:text-4xl font-800 typewritter mb-8 mt-4">
-                <h3>{newProjectName}<span className="blinking-cursor">|</span> </h3> 
+            <div className="text-6xl md:text-7xl font-bold typewritter mb-8 mt-4">
+                <h3>AldebaranMovie</h3> 
             </div>
             <div className="text-xl italic">
-                <p>Your Favorite Movie Platform</p>
+                <p>{newProjectDesc} <span className="blinking-cursor">|</span> </p>
             </div>
             <div className="mt-8">
                 <Link to='/' 
