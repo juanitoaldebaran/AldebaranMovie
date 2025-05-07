@@ -6,13 +6,13 @@ import { faCirclePlay, faFilm } from "@fortawesome/free-solid-svg-icons";
 
 export default function Welcome() {
 
-    const projectDesc = "Your Favorite Movie Platform";
+    const projectDesc = "Your Favourite Movie Platform";
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isTyping, setIsTyping] = useState(true);
     const [newProjectDesc, setNewProjectDesc] = useState("");
     
     useEffect(() => {
-        const timeInterval = isTyping ? 250 : 150;
+        const timeInterval = isTyping ? 250 : 180;
         let timeOut;
 
         if (isTyping && currentIndex < projectDesc.length) {
@@ -37,17 +37,17 @@ export default function Welcome() {
     return (
         <div className="flex flex-col items-center justify-center w-full h-screen bg-black text-white text-center">
             <div className="mb-8 ">
-                <FontAwesomeIcon className="text-white-500" size="3x" icon={faFilm}/>
+                <FontAwesomeIcon className="black-500" size="3x" icon={faFilm}/>
             </div>
-            <div className="text-6xl md:text-7xl font-bold typewritter mb-8 mt-4">
+            <div className="text-6xl md:text-7xl text-red-500 font-bold typewritter mb-8 mt-4">
                 <h3>AldebaranMovie</h3> 
             </div>
             <div className="text-xl italic">
                 <p>{newProjectDesc} <span className="blinking-cursor">|</span> </p>
             </div>
             <div className="mt-8">
-                <Link to='/' 
-                className="px-6 py-2 text-lg text-white bg-red-500 rounded hover:bg-red-800 transition duration-200">
+                <Link to='/login' 
+                className="px-8 py-4 text-lg text-white bg-red-500 rounded hover:bg-red-800 transition duration-200">
                     <FontAwesomeIcon className="mr-2" icon={faCirclePlay} />                   
                     Get Started
                 </Link>
