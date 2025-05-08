@@ -40,7 +40,7 @@ export default function Home() {
     return (
         <div className="bg-black min-h-screen">
             <Navbar />
-            <div className="p-4 grid grid-cols2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div className="p-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                 {movies.map((movie) => (
                     <MovieCard key={movie.id} movie={movie}/>
                 ))}

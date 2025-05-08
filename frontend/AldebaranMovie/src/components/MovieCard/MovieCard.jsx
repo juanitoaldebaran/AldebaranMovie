@@ -17,7 +17,7 @@ export default function MovieCard({movie}) {
     }
 
     return (
-        <div className="relative text-white w-60 bg-gray-900 mt-8 flex flex-col justify-center items-center p-4 cursor-pointer rounded-xl shadow-xl hover:scale-105 transition-transform duration-200">
+        <div className="relative text-white w-50 bg-gray-900 mt-8 flex flex-col justify-center items-center p-4 cursor-pointer rounded-xl shadow-xl hover:scale-105 transition-transform duration-200">
             <div>
                 <img 
                 src={imageUrl} 
