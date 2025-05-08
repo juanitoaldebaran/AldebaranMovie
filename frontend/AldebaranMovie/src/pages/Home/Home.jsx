@@ -27,8 +27,8 @@ export default function Home() {
                 const data = await response.json();
                 setMovies(data.results || []);
             } catch (error) {
-                setError(true);
-                throw new Error("Failed to fetch movies");
+                setError(error);
+                throw new Error("Failed to fetch movies from server");
             } finally {
                 setLoading(false);
             }
@@ -40,7 +40,7 @@ export default function Home() {
     return (
         <div className="bg-black min-h-screen">
             <Navbar />
-            <div className="p-4 grid grid-cols2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="p-4 grid grid-cols2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                 {movies.map((movie) => (
                     <MovieCard key={movie.id} movie={movie}/>
                 ))}

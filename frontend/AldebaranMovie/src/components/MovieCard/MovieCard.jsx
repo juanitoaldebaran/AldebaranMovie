@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import movieAPI from "../../api/movieApi";
+import { useState } from "react";
 
 export default function MovieCard({movie}) {
 
@@ -8,24 +10,41 @@ export default function MovieCard({movie}) {
     ? `${movieAPI.IMAGE_BASE_URL}${movie.poster_path}` 
     : "https://via.placeholder.com/500x750?text=No+Image";
 
+    const [isFavouries, setIsFavourites] = useState(false);
+
+    const handleFavourites = () => {
+
+    }
+
     return (
-        <div className="relative w-60 bg-white flex flex-col justify-center items-center p-4 cursor-pointer rounded-2xl shadow-xl hover:scale-105 transition-transform duration-200">
+        <div className="relative text-white w-60 bg-gray-900 mt-8 flex flex-col justify-center items-center p-4 cursor-pointer rounded-xl shadow-xl hover:scale-105 transition-transform duration-200">
             <div>
                 <img 
                 src={imageUrl} 
-                alt={movie.title}
-                className="object-cover w-full"
+                alt={movie.title}s
+                className="object-cover w-full h-full"
                 />
             </div>
-            <h1 className="font-semibold text-2xl text-center mt-4">{movie.title}</h1>
-            <div className="flex justify-between text-sm text-gray-400 mt-2">
+            <div>   
+            <button className="text-black bg-gray-200 rounded-full absolute -top-2 right-0 p-4 cursor-pointer">
+            <FontAwesomeIcon 
+                    icon={faHeart} className="cursor-pointer text-3xl" 
+                    />
+            </button>
+            </div>
+            <h1 className="font-semibold text-xl text-center mt-4">{movie.title}</h1>
+            <div className="flex justify-between space-x-4 text-sm mt-2">
                     <span>{movie.release_date?.slice(0, 4) || "N/A"}</span>
                     <span>{Math.round(movie.vote_average * 10)}%</span>
-                </div>
-            <button className="border-2 rounded-lg p-1 space-x-2 mt-2 cursor-pointer">
-                <FontAwesomeIcon icon={faPlus} />
-                Add to watchlist
-            </button>
+            </div>
+            <div>
+                <button className="p-2 cursor-pointer mt-4 flex justify-center items-center gap-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">
+                    <FontAwesomeIcon 
+                    icon={faCircleArrowRight} 
+                    />
+                    Add to watchlist
+                </button>
+            </div>
         </div>
     )
 }
