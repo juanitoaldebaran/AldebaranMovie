@@ -7,3 +7,7 @@ const movieAPI = {
 }
 
 export default movieAPI;
+
+// const endpoint = query 
+// ? `${movieAPI.BASE_URL}${movieAPI.SEARCH_URL}?api_key=${movieAPI.API_KEY}&query=${query}`
+// : `${movieAPI.BASE_URL}${movieAPI.POPULAR_URL}?api_key=${movieAPI.API_KEY}`;
