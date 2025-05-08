@@ -11,6 +11,7 @@ export default function MovieCard({movie}) {
     : "https://via.placeholder.com/500x750?text=No+Image";
 
     const [isFavouries, setIsFavourites] = useState(false);
+    const [favouritesMovies, setFavouritesMovies] = useState([]);
 
     const handleFavourites = () => {
 
@@ -27,9 +28,10 @@ export default function MovieCard({movie}) {
             </div>
             <div>   
             <button className="text-black bg-gray-200 rounded-full absolute -top-2 right-0 p-4 cursor-pointer">
-            <FontAwesomeIcon 
-                    icon={faHeart} className="cursor-pointer text-3xl" 
-                    />
+                <FontAwesomeIcon 
+                icon={faHeart} 
+                className="cursor-pointer text-3xl" 
+                />
             </button>
             </div>
             <h1 className="font-semibold text-xl text-center mt-4">{movie.title}</h1>

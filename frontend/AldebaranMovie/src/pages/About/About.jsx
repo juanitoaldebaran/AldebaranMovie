@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilm, faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import JourneyCard from "../../components/JourneyCard/JourneyCard";
+import Footer from "../../components/Footer/Footer";
 
 export default function About() {
 
@@ -39,39 +41,39 @@ export default function About() {
     return (
         <div className="bg-black min-h-screen">
             <Navbar />
-        <main className="flex flex-col">
-            <section className="flex flex-col items-center justify-center w-full min-h-screen text-center px-4">
-                <div className="flex flex-col items-center justify-center w-full h-screen bg-black text-white text-center">
-                    <div className="mb-8 ">
-                        <FontAwesomeIcon className="black-500" size="3x" icon={faFilm}/>
+            <main className="flex flex-col">
+                <section className="flex flex-col items-center justify-center w-full min-h-screen text-center px-4">
+                    <div className="flex flex-col items-center justify-center w-full h-screen bg-black text-white text-center">
+                        <div className="mb-8 ">
+                            <FontAwesomeIcon className="black-500" size="3x" icon={faFilm}/>
+                        </div>
+                        <div className="text-6xl md:text-7xl text-red-500 font-bold typewritter mb-8 mt-4">
+                            <h3>AldebaranMovie</h3> 
+                        </div>
+                        <div className="text-xl italic">
+                            <p>{newProjectDesc} <span className="blinking-cursor">|</span> </p>
+                        </div>
+                        <div className="mt-8">
+                            <Link to='/' 
+                            className="px-8 py-4 text-lg text-white bg-red-500 rounded hover:bg-red-800 transition duration-200">
+                                <FontAwesomeIcon className="mr-2" icon={faCirclePlay} />                   
+                                Search Movies
+                            </Link>
+                        </div>
+                        <div className="mt-8 text-sm text-white-100">
+                            © 2025 AldebaranMovie. All rights reserved.
+                        </div>
                     </div>
-                    <div className="text-6xl md:text-7xl text-red-500 font-bold typewritter mb-8 mt-4">
-                        <h3>AldebaranMovie</h3> 
+                </section>
+                
+                {/* <section className="w-full px-6 md:px-14">
+                    <div className="flex flex-col justify-center items-center">
+                        <h1 className="text-white font-bold text-3xl">Our Journey</h1>
+                        <JourneyCard />
                     </div>
-                    <div className="text-xl italic">
-                        <p>{newProjectDesc} <span className="blinking-cursor">|</span> </p>
-                    </div>
-                    <div className="mt-8">
-                        <Link to='/' 
-                        className="px-8 py-4 text-lg text-white bg-red-500 rounded hover:bg-red-800 transition duration-200">
-                            <FontAwesomeIcon className="mr-2" icon={faCirclePlay} />                   
-                            Search Movies
-                        </Link>
-                    </div>
-                    <div className="mt-8 text-sm text-white-100">
-                        © 2025 AldebaranMovie. All rights reserved.
-                    </div>
-                </div>
-            </section>
-            
-            <section className="w-full py-8 px-6 md:px-14">
-                <div className="flex flex-col justify-center items-center">
-                    <h1 className="text-white font-bold text-3xl">Our Journey</h1>
-                </div>
-            </section>
-
-
-        </main>   
+                </section> */}
+            </main>   
+            <Footer />
         </div>
 
     )
