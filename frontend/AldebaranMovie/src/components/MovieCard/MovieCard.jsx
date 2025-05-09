@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import movieAPI from "../../api/movieApi";
-import { useState } from "react";
+import { useFavourites } from "../../context/FavouritesContext";
 
 export default function MovieCard({movie}) {
 
@@ -10,27 +10,27 @@ export default function MovieCard({movie}) {
     ? `${movieAPI.IMAGE_BASE_URL}${movie.poster_path}` 
     : "https://via.placeholder.com/500x750?text=No+Image";
 
-    const [isFavouries, setIsFavourites] = useState(false);
-    const [favouritesMovies, setFavouritesMovies] = useState([]);
+    const {favourites, toggleFavourites} = useFavourites();
 
-    const handleFavourites = () => {
+    const isFavourite = favourites.some((m) => m.id === movie.id);
 
-    }
 
     return (
         <div className="relative text-white w-50 bg-gray-900 mt-8 flex flex-col justify-center items-center p-4 cursor-pointer rounded-xl shadow-xl hover:scale-105 transition-transform duration-200">
             <div>
                 <img 
                 src={imageUrl} 
-                alt={movie.title}s
+                alt={movie.title}
                 className="object-cover w-full h-full"
                 />
             </div>
             <div>   
-            <button className="text-black bg-gray-200 rounded-full absolute -top-2 right-0 p-4 cursor-pointer">
+            <button
+            onClick={() => toggleFavourites(movie)}
+            className="bg-gray-200 rounded-full absolute -top-2 right-0 p-4 cursor-pointer text-3xl">
                 <FontAwesomeIcon 
                 icon={faHeart} 
-                className="cursor-pointer text-3xl" 
+                className={isFavourite ? "text-red-500" : "text-black"}
                 />
             </button>
             </div>

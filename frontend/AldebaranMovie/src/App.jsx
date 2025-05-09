@@ -7,6 +7,7 @@ import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Favourites from './pages/Favourites/Favourites';
 
+
 function App() {
 
   return (
