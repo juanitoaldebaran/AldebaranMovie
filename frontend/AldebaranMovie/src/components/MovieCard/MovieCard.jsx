@@ -3,6 +3,7 @@ import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import movieAPI from "../../api/movieApi";
 import { useFavourites } from "../../context/FavouritesContext";
+import { useWatchlist } from "../../context/WatchlistContext";
 
 export default function MovieCard({movie}) {
 
@@ -11,8 +12,11 @@ export default function MovieCard({movie}) {
     : "https://via.placeholder.com/500x750?text=No+Image";
 
     const {favourites, toggleFavourites} = useFavourites();
+    const {watchlist, toggleWatchlist} = useWatchlist();
 
     const isFavourite = favourites.some((m) => m.id === movie.id);
+    const isWatchlist = watchlist.some((w) => w.id === movie.id);
+
 
 
     return (
@@ -27,10 +31,10 @@ export default function MovieCard({movie}) {
             <div>   
             <button
             onClick={() => toggleFavourites(movie)}
-            className="bg-gray-200 rounded-full absolute -top-2 right-0 p-4 cursor-pointer text-3xl">
+            className="bg-gray-300 rounded-full absolute -top-2 right-0 p-4 cursor-pointer text-4xl">
                 <FontAwesomeIcon 
                 icon={faHeart} 
-                className={isFavourite ? "text-red-500" : "text-black"}
+                className={isFavourite ? "text-red-600 transition-all duration-200 hover:scale-125" : "text-black transition-all duration-200 hover:scale-125"}
                 />
             </button>
             </div>
@@ -40,7 +44,9 @@ export default function MovieCard({movie}) {
                     <span>{Math.round(movie.vote_average * 10)}%</span>
             </div>
             <div>
-                <button className="p-2 cursor-pointer mt-4 flex justify-center items-center gap-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">
+                <button
+                 onClick={() => toggleWatchlist(movie)}
+                 className="p-2 cursor-pointer mt-4 flex justify-center items-center gap-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">
                     <FontAwesomeIcon 
                     icon={faCircleArrowRight} 
                     />

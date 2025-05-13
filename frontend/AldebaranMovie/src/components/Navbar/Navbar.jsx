@@ -67,8 +67,8 @@ export default function Navbar() {
             path: "/watchlist",
         }, 
         {
-            name: "Services",
-            path: "/services",
+            name: "Member",
+            path: "/member",
         }, 
         {
             name: "Review",

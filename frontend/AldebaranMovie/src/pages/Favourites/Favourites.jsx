@@ -18,13 +18,14 @@ export default function Favourites() {
                     {favourites.length > 0 ? (
                         favourites.map((fav) => (
                             <MovieCard key={fav.id} movie={fav}/>
-                        ))) : 
-                        (
+                        ))) : (
                         <div className="w-full flex flex-col gap-5 justify-center items-center col-span-full">
-                            <p className="text-white mt-8">No favourites movie added</p>
-                            <Link to={'/'} className="bg-red-500 rounded-lg text-white p-4">
-                                <FontAwesomeIcon icon={faCircleArrowRight} />
-                                Search Movies
+                            <p className="text-white text-xl mt-8">No favourites movie added</p>
+                            <Link to={'/'} className="px-2 py-2 text-lg text-white bg-red-500 rounded hover:bg-red-800 transition duration-200">
+                                <FontAwesomeIcon
+                                className="mr-2"
+                                 icon={faCircleArrowRight} />
+                                Add Movies
                             </Link>
                         </div>                
                         )}

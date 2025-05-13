@@ -3,11 +3,14 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { FavouritesProvider } from './context/FavouritesContext.jsx'
+import { WatchlistProvider } from './context/WatchlistContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <FavouritesProvider>
-      <App />
+      <WatchlistProvider>
+        <App />
+      </WatchlistProvider>
     </FavouritesProvider>
-  </StrictMode>,
+  </StrictMode>
 )

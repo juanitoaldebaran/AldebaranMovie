@@ -18,9 +18,9 @@ export const FavouritesProvider = ({children}) => {
     }, []);
 
     const toggleFavourites = (movie) => {
-        const exists = favourites.some((m) => m.id === movie.id);
+        const isAlreadyFav = favourites.some((m) => m.id === movie.id);
 
-        if (exists) {
+        if (isAlreadyFav) {
             setFavourites((prev) => (prev.filter((m) => (m.id !== movie.id)))) 
         } else {
             setFavourites((prev) => ([...prev, movie]));
@@ -29,7 +29,7 @@ export const FavouritesProvider = ({children}) => {
 
     return (
        <FavouritesContext.Provider value={{favourites, toggleFavourites}}>
-        {children}
+            {children}
        </FavouritesContext.Provider>
     )
 }
