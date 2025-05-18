@@ -1,9 +1,9 @@
 import { useState } from "react";
 
+
 export default function SignForMember({onCreate, onCancel}) {
     
     const [newMember, setNewMember] = useState({
-        memberID: 0,
         memberName: "",
         memberEmail: "",
         memberType: "",
@@ -22,6 +22,12 @@ export default function SignForMember({onCreate, onCancel}) {
         e.preventDefault();
         try {
             onCreate(newMember);
+            setNewMember({
+                memberName: "",
+                memberEmail: "",
+                memberType: "",
+                memberTag: "",
+            })
         } catch (error) {
             throw new Error("Failed to create new member");
         }

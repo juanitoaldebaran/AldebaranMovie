@@ -46,7 +46,7 @@ export default function Welcome() {
                 <p>{newProjectDesc} <span className="blinking-cursor">|</span> </p>
             </div>
             <div className="mt-8">
-                <Link to='/login' 
+                <Link to='/home' 
                 className="px-8 py-4 text-lg text-white bg-red-500 rounded hover:bg-red-800 transition duration-200">
                     <FontAwesomeIcon className="mr-2" icon={faCirclePlay} />                   
                     Get Started

@@ -1,10 +1,11 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../../components/Navbar/Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MemberTable from "../../components/MemberComponents/MemberTable";
 import EditMember from "../../components/MemberComponents/EditMember/EditMember";
 import SignForMember from "../../components/MemberComponents/SignForMember/SignForMember";
+import memberServiceAPI from "../../service/memberService/memberService";
 
 export default function Member() {
     
@@ -14,7 +15,25 @@ export default function Member() {
     const [selectedMember, setSelectedMember] = useState(null);
     const [isEditMember, setIsEditMember] = useState(false);
     const [isAddMember, setIsAddMember] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     
+    useEffect(() => {
+        const getAllMembers = async () => {
+            try {
+                setIsLoading(true);
+                const getAll = await memberServiceAPI.getAllMembers();
+                setMemberValue(getAll);
+                setFilterMember(getAll);
+            } catch (error) {
+                throw new Error("Failed");
+            } finally {
+                setIsLoading(false);
+            }
+        }
+
+        getAllMembers();
+    }, []);
+
     const handleSearch = () => {
         try {
             if (searchMember.trim()) {
@@ -36,25 +55,38 @@ export default function Member() {
         setSelectedMember(editMember);
     }
 
-    const handleDelete = (memberID) => {
+    const handleDelete = async (memberID) => {
+        try {
         if (window.confirm("Are you sure want to delete this member?")) {
-            const deleteMember = memberValue.filter((member) => (
-                member.memberID !== memberID
-            ));
-            setFilterMember(deleteMember);
-            setMemberValue(deleteMember);
-            alert("Member successfully deleted!");
-        } 
+            setIsLoading(true);
+                const deleteMember = await memberServiceAPI.deleteMember(memberID);
+                setFilterMember(deleteMember);
+                setMemberValue(deleteMember);
+                alert("Member successfully deleted!");
+            } 
+        } catch (error) {
+            throw new Error("Failed to delete member by id");
+        } finally {
+            setIsLoading(false);
+        }
     }
 
-    const handleSave = (editMember) => {
-        const updatedMember = memberValue.map((member) => (
-            member.memberID === editMember.memberID ? editMember : member
-        ));
-        alert("Member successfully updated!");
-        setFilterMember(updatedMember);
-        setMemberValue(updatedMember);
-        setIsEditMember(false);
+    const handleSave = async (editMember) => {
+        try {
+            const newUpdateProduct = await memberServiceAPI.updateMember(editMember.memberID, editMember);
+            const updatedMember = memberValue.map((member) => (
+                member.memberID === newUpdateProduct.memberID ? editMember : member
+            ))
+            alert("Member successfully updated!");
+            setFilterMember(updatedMember);
+            setMemberValue(updatedMember);
+            setIsEditMember(false);
+        } catch (error) {
+            throw new Error("Failed to update member");
+        } finally {
+            setIsLoading(false);
+        }
+        
     }
 
     const handleSubmit = (e) => {
@@ -63,13 +95,21 @@ export default function Member() {
         setSearchMember("");
     }
     
-    const handleAdd = (createMember) => {
-        const newID =  memberValue.length > 0 ? Math.max(...memberValue.map(m => m.memberID)) + 1 : 1;
-        const addMember = {...createMember, memberID: newID};
-        alert("Member successfully added!");
-        setFilterMember([...filterMember ,addMember]);
-        setMemberValue([...memberValue, addMember]);
-        setIsAddMember(false);
+    const handleAdd = async (newMember) => {
+        try {
+            setIsLoading(true);
+            const createdMember = await memberServiceAPI.createMember(newMember);
+            const addMember = [...memberValue, createdMember];
+            alert("Member successfully added!");
+            setFilterMember(addMember);
+            setMemberValue(addMember);
+            setIsAddMember(false);
+        } catch (error) {
+            console.error("Failed to create new member", error);
+            alert("Failed to create new member");
+        } finally {
+            setIsLoading(false);
+        }
     }
 
     return (

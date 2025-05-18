@@ -54,7 +54,7 @@ export default function About() {
                             <p>{newProjectDesc} <span className="blinking-cursor">|</span> </p>
                         </div>
                         <div className="mt-8">
-                            <Link to='/' 
+                            <Link to='/home' 
                             className="px-8 py-4 text-lg text-white bg-red-500 rounded hover:bg-red-800 transition duration-200">
                                 <FontAwesomeIcon className="mr-2" icon={faCirclePlay} />                   
                                 Search Movies
@@ -65,13 +65,6 @@ export default function About() {
                         </div>
                     </div>
                 </section>
-                
-                {/* <section className="w-full px-6 md:px-14">
-                    <div className="flex flex-col justify-center items-center">
-                        <h1 className="text-white font-bold text-3xl">Our Journey</h1>
-                        <JourneyCard />
-                    </div>
-                </section> */}
             </main>   
             <Footer />
         </div>

@@ -9,9 +9,9 @@ export default function Watchlist() {
     const { watchlist } = useWatchlist(); 
 
     return (
-        <div className="bg-black min-h-screen">
+        <div className="bg-gradient-to-br from-gray-900 to-black min-h-screen">
             <Navbar />
-            <h1 className="text-white text-xl font-bold text-center mt-8">Your Watchlist Movies</h1>
+            <h1 className="ml-4 text-white text-3xl font-bold text-center mt-8 pb-2 border-b border-red-500  inline-block">Your Watchlist Movies</h1>
             <div>
                 {watchlist.length > 0 ? (
                     watchlist.map((wL) => (

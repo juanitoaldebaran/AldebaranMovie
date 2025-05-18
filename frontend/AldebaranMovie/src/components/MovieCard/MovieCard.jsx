@@ -3,6 +3,7 @@ import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import movieAPI from "../../api/movieApi";
 import { useFavourites } from "../../context/FavouritesContext";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useWatchlist } from "../../context/WatchlistContext";
 
 export default function MovieCard({movie}) {
@@ -46,11 +47,17 @@ export default function MovieCard({movie}) {
             <div>
                 <button
                  onClick={() => toggleWatchlist(movie)}
-                 className="p-2 cursor-pointer mt-4 flex justify-center items-center gap-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">
+                 className="p-2 cursor-pointer mt-4  w-40 flex justify-center items-center gap-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition duration-300">
                     <FontAwesomeIcon 
                     icon={faCircleArrowRight} 
                     />
                     Add to watchlist
+                </button>
+            </div>
+            <div>
+                <button className="bg-blue-600 rounded-lg p-2 w-40 cursor-pointer mt-4 gap-2 flex justify-center items-center hover:bg-blue-700 transition duration-300">
+                    <FontAwesomeIcon icon={faPlus} />
+                    Rate this movie
                 </button>
             </div>
         </div>
