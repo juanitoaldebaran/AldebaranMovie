@@ -91,6 +91,15 @@ export default function Review() {
                             className="text-gray-900 w-160 h-12 rounded bg-white p-2"
                             onFocus={() => movies.length > 0 && setIsDropdown(true)}
                             />
+                        <button
+                            type="submit"
+                            className="absolute bg-blue-600 p-3 -right-5 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-200 rounded"
+                                >
+                                <FontAwesomeIcon
+                                icon={faMagnifyingGlass}
+                                size="lg"
+                                />
+                        </button>
                     </div>
                     
                     {isDropdown && (
