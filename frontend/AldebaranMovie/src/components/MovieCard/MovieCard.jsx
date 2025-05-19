@@ -6,6 +6,7 @@ import { useFavourites } from "../../context/FavouritesContext";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useWatchlist } from "../../context/WatchlistContext";
 
+
 export default function MovieCard({movie}) {
 
     const imageUrl = movie.poster_path 
@@ -17,7 +18,6 @@ export default function MovieCard({movie}) {
 
     const isFavourite = favourites.some((m) => m.id === movie.id);
     const isWatchlist = watchlist.some((w) => w.id === movie.id);
-
 
 
     return (
@@ -52,12 +52,6 @@ export default function MovieCard({movie}) {
                     icon={faCircleArrowRight} 
                     />
                     Add to watchlist
-                </button>
-            </div>
-            <div>
-                <button className="bg-blue-600 rounded-lg p-2 w-40 cursor-pointer mt-4 gap-2 flex justify-center items-center hover:bg-blue-700 transition duration-300">
-                    <FontAwesomeIcon icon={faPlus} />
-                    Rate this movie
                 </button>
             </div>
         </div>

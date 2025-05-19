@@ -11,11 +11,11 @@ export default function Watchlist() {
     return (
         <div className="bg-gradient-to-br from-gray-900 to-black min-h-screen">
             <Navbar />
-            <h1 className="ml-4 text-white text-3xl font-bold text-center mt-8 pb-2 border-b border-red-500  inline-block">Your Watchlist Movies</h1>
+            <h1 className="ml-4 text-white text-3xl font-bold text-center mt-8 pb-2 border-b border-red-500 inline-block">Your Watchlist Movies</h1>
             <div>
                 {watchlist.length > 0 ? (
-                    watchlist.map((wL) => (
-                        <MovieCard key={wL.id} movie={wL} />
+                    watchlist.map((watL) => (
+                        <MovieCard key={watL.id} movie={watL} />
                     ))) : (
                     <div className="w-full flex flex-col justify-center items-center col-span-full gap-5">
                         <p className="text-white text-xl mt-8">No watchlist movie added</p>

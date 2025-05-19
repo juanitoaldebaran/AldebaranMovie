@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilm, faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import JourneyCard from "../../components/JourneyCard/JourneyCard";
 import Footer from "../../components/Footer/Footer";
 
 export default function About() {
